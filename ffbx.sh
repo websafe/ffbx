@@ -99,7 +99,7 @@ do
         "SELECT lastModified,fk FROM moz_bookmarks
             WHERE type=1 ORDER BY lastModified"
     );
-    
+
     # Filter the obtained list for distinct places ids ordered
     # by lastModified timestamp:
     bookmarks_places_ids=$(
@@ -107,15 +107,15 @@ do
             | ${CMD_CUT} -d'|' -f2 \
             | ${CMD_UNIQ};
     );
-    
+
     debug "bookmarks_places_ids ${bookmarks_places_ids}";
 
     #
     for bookmark_places_id in ${bookmarks_places_ids};
     do
-    
+
         debug "bookmark_places_id ${bookmark_places_id}";
-    
+
         # Retrieve the bookmark URL:
         bookmark_url=$(
             ${CMD_SQLITE3} "${db_places_path}" \
@@ -124,19 +124,19 @@ do
                 | ${CMD_TR} -d "\n" \
                 | ${CMD_TR} -d "\r";
         );
-    
+
         debug "bookmark_url ${bookmark_url}";
-    
+
         # Retrieve ids of tags assigned to the current bookark:
         bookmark_tags_ids=$(
             ${CMD_SQLITE3} "${db_places_path}" \
                 "SELECT parent FROM moz_bookmarks
                     WHERE fk=${bookmark_places_id} AND title IS NULL";
         );
-    
+
         debug "bookmark_tags_ids ${bookmark_tags_ids}";
-    
-        # Retrieve commaspearated list of tags assigned to the current bookmark:
+
+        # Retrieve commaseparated list of tags assigned to the current bookmark:
         bookmark_tags=$(
             for bookmark_tag_id in ${bookmark_tags_ids};
             do
@@ -145,18 +145,18 @@ do
                         WHERE id=${bookmark_tag_id};";
             done | ${CMD_TR} "\n" "${FFBX_ITEM_SEPARATOR}";
         );
-    
+
         debug "bookmark_tags ${bookmark_tags}";
-    
+
         # Retrieve the title:
         bookmark_title=$(
             ${CMD_SQLITE3} "${db_places_path}" \
                 "SELECT title FROM moz_bookmarks
                     WHERE fk=${bookmark_places_id} AND title!='' LIMIT 1;";
         );
-    
+
         debug "bookmark_title ${bookmark_title}";
-    
+
         # Retrieve last modification timestamp for the current bookmark:
         bookmark_last_modification=$(
             ${CMD_SQLITE3} "${db_places_path}" \
@@ -164,9 +164,9 @@ do
                     WHERE fk=${bookmark_places_id} 
                     ORDER BY lastModified DESC LIMIT 1;";
         );
-    
+
         debug "bookmark_last_modification ${bookmark_last_modification}";
-    
+
         # Retrive id of current bookmarks parent folder:
         bookmark_folder_id=$(
             ${CMD_SQLITE3} "${db_places_path}" \
@@ -174,18 +174,18 @@ do
                     WHERE type=1 AND fk=${bookmark_places_id}
                     ORDER BY id ASC LIMIT 1;";
         );
-    
+
         debug "bookmark_parent_folder_id ${bookmark_folder_id}";
-    
+
         # Retrive the name of current bookmarks parent folder:
         bookmark_folder_name=$(
             ${CMD_SQLITE3} "${db_places_path}" \
                 "SELECT title FROM moz_bookmarks
                     WHERE id=${bookmark_folder_id};";
         );
-    
+
         debug "bookmark_parent_folder_name ${bookmark_folder_name}";
-    
+
         # Output CSV data:
         echo -ne "${bookmark_last_modification}";
         if [ "${db_places_paths_were_autodiscovered}" = "yes" ];
