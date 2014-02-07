@@ -175,7 +175,7 @@ do
                     ORDER BY id ASC LIMIT 1;";
         );
 
-        debug "bookmark_parent_folder_id ${bookmark_folder_id}";
+        debug "bookmark_folder_id ${bookmark_folder_id}";
 
         # Retrive the name of current bookmarks parent folder:
         bookmark_folder_name=$(
@@ -184,7 +184,7 @@ do
                     WHERE id=${bookmark_folder_id};";
         );
 
-        debug "bookmark_parent_folder_name ${bookmark_folder_name}";
+        debug "bookmark_folder_name ${bookmark_folder_name}";
 
         # Output CSV data:
         echo -ne "${bookmark_last_modification}";
@@ -208,4 +208,3 @@ do
         echo -ne "${FFBX_ROW_SEPARATOR}";
     done;
 done;
-
