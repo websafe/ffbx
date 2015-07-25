@@ -127,7 +127,7 @@ do
 
         debug "bookmark_url ${bookmark_url}";
 
-        # Retrieve ids of tags assigned to the current bookark:
+        # Retrieve ids of tags assigned to the current bookmark:
         bookmark_tags_ids=$(
             ${CMD_SQLITE3} "${db_places_path}" \
                 "SELECT parent FROM moz_bookmarks
@@ -136,7 +136,8 @@ do
 
         debug "bookmark_tags_ids ${bookmark_tags_ids}";
 
-        # Retrieve commaseparated list of tags assigned to the current bookmark:
+        # Retrieve comma-separated list of tags assigned to the current
+        # bookmark:
         bookmark_tags=$(
             for bookmark_tag_id in ${bookmark_tags_ids};
             do
@@ -167,7 +168,7 @@ do
 
         debug "bookmark_last_modification ${bookmark_last_modification}";
 
-        # Retrive id of current bookmarks parent folder:
+        # Retrieve id of current bookmarks parent folder:
         bookmark_folder_id=$(
             ${CMD_SQLITE3} "${db_places_path}" \
                 "SELECT parent FROM moz_bookmarks
@@ -177,7 +178,7 @@ do
 
         debug "bookmark_folder_id ${bookmark_folder_id}";
 
-        # Retrive the name of current bookmarks parent folder:
+        # Retrieve the name of current bookmarks parent folder:
         bookmark_folder_name=$(
             ${CMD_SQLITE3} "${db_places_path}" \
                 "SELECT title FROM moz_bookmarks
