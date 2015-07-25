@@ -52,13 +52,13 @@ if [ -z "${1}" ];
 then
     #
     found_db_places_paths=$(
-    #
-    ${CMD_FIND} ~/.mozilla/firefox/ \
-        -type f \
-        -name "places.sqlite" \
-        -mindepth 2 \
-        -maxdepth 2 \
-        2>/dev/null;
+        #
+        ${CMD_FIND} ~/.mozilla/firefox/ \
+            -type f \
+            -name "places.sqlite" \
+            -mindepth 2 \
+            -maxdepth 2 \
+            2>/dev/null;
     );
     #
     if [ -z "${found_db_places_paths}" ];
