@@ -143,9 +143,10 @@ do
             do
                 ${CMD_SQLITE3} "${db_places_path}" \
                     "SELECT title FROM moz_bookmarks
-                        WHERE id=${bookmark_tag_id};"
-            done | ${CMD_TR} "\n" "${FFBX_ITEM_SEPARATOR}"
-        );
+                        WHERE id=${bookmark_tag_id}"
+            done \
+                | ${CMD_TR} "\n" "${FFBX_ITEM_SEPARATOR}"
+        )
 
         debug "bookmark_tags ${bookmark_tags}"
 
