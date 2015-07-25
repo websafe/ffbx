@@ -1,6 +1,6 @@
 #!/bin/bash
 # ffbx.sh - Firefox bookmarks extractor - extract bookmarks from user profiles.
-# Copyright (C) 2014 Thomas Szteliga <ts@websafe.pl>, <https://websafe.pl/>
+# Copyright (C) 2014-2015 Thomas Szteliga <ts@websafe.pl>, <https://websafe.pl/>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
