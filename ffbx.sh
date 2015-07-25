@@ -21,16 +21,16 @@ IFS="
 "
 
 #
-CMD_CUT="cut";
-CMD_FIND="find";
-CMD_SQLITE3="sqlite3";
-CMD_TR="tr";
-CMD_UNIQ="uniq";
+CMD_CUT=${CMD_CUT:-/bin/cut}
+CMD_FIND=${CMD_FIND:-/usr/bin/find}
+CMD_SQLITE3=${CMD_SQLITE3:-/usr/bin/sqlite3}
+CMD_TR=${CMD_TR:-/bin/tr}
+CMD_UNIQ=${CMD_UNIQ:-/bin/uniq}
 
 # 
-FFBX_FIELD_SEPARATOR="\t";
-FFBX_ROW_SEPARATOR="\n";
-FFBX_ITEM_SEPARATOR=",";
+FFBX_FIELD_SEPARATOR=${FFBX_FIELD_SEPARATOR:-"\t"}
+FFBX_ROW_SEPARATOR=${FFBX_ROW_SEPARATOR:-"\n"}
+FFBX_ITEM_SEPARATOR=${FFBX_ITEM_SEPARATOR:-","}
 
 # ------------------------------------------------------------------------------
 
