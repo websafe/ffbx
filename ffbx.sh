@@ -193,20 +193,20 @@ do
         if [ "${db_places_paths_were_autodiscovered}" = "yes" ];
         then
             echo -ne "${FFBX_FIELD_SEPARATOR}"
-            echo -n "${profile_name}"
+            echo -n "${profile_name}" | ${CMD_TR} "\t" " "
         fi
         #echo -ne "${FFBX_FIELD_SEPARATOR}"
         #echo -n "${profile_path}"
         #echo -ne "${FFBX_FIELD_SEPARATOR}"
         #echo -n "${bookmark_places_id}"
         echo -ne "${FFBX_FIELD_SEPARATOR}"
-        echo -n "${bookmark_folder_name}"
+        echo -n "${bookmark_folder_name}" | ${CMD_TR} "\t" " "
         echo -ne "${FFBX_FIELD_SEPARATOR}"
-        echo -n "${bookmark_url}"
+        echo -n "${bookmark_url}" | ${CMD_TR} "\t" " "
         echo -ne "${FFBX_FIELD_SEPARATOR}"
-        echo -n "${bookmark_title}"
+        echo -n "${bookmark_title}" | ${CMD_TR} "\t" " "
         echo -ne "${FFBX_FIELD_SEPARATOR}"
-        echo -n "${bookmark_tags}"
+        echo -n "${bookmark_tags}" | ${CMD_TR} "\t" " "
         echo -ne "${FFBX_ROW_SEPARATOR}"
     done
 done
