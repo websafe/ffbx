@@ -19,11 +19,29 @@ Bookmarks are extracted with:
 Usage
 -----
 
-
-Output bookmarks found in `places.sqlite`:
+A simple test without installing:
 
 ~~~~ bash
-ffbx ~/.mozilla/firefox/41t52vmb.default/places.sqlite
+wget -qO - https://raw.githubusercontent.com/websafe/ffbx/master/ffbx.sh | bash
+~~~~
+
+or:
+
+~~~~ bash
+lynx -dump https://raw.githubusercontent.com/websafe/ffbx/master/ffbx.sh | bash
+~~~~
+
+or:
+
+~~~~ bash
+curl -sS https://raw.githubusercontent.com/websafe/ffbx/master/ffbx.sh | bash
+~~~~
+
+
+Output bookmarks stored in `places.sqlite`:
+
+~~~~ bash
+ffbx.sh ~/.mozilla/firefox/41t52vmb.default/places.sqlite
 ~~~~
 
 
@@ -32,7 +50,7 @@ in `~/.mozilla/firefox` subdirectories. In this case
 an additional column with the profile name is shown:
 
 ~~~~ bash
-ffbx
+ffbx.sh
 ~~~~
 
 
@@ -43,7 +61,7 @@ Testing on a new profile with one new bookmark added (the last one).
 
 
 ~~~~ bash
-./ffbx.sh ~/.mozilla/firefox/ffbx-example/places.sqlite
+ffbx.sh ~/.mozilla/firefox/ffbx-example/places.sqlite
 ~~~~
 
 
