@@ -21,11 +21,11 @@ IFS="
 "
 
 #
-CMD_CUT=${CMD_CUT:-/bin/cut}
-CMD_FIND=${CMD_FIND:-/usr/bin/find}
-CMD_SQLITE3=${CMD_SQLITE3:-/usr/bin/sqlite3}
-CMD_TR=${CMD_TR:-/bin/tr}
-CMD_UNIQ=${CMD_UNIQ:-/bin/uniq}
+CMD_CUT=${CMD_CUT:-$(which cut)}
+CMD_FIND=${CMD_FIND:-$(which find)}
+CMD_SQLITE3=${CMD_SQLITE3:-$(which sqlite3)}
+CMD_TR=${CMD_TR:-$(which tr)}
+CMD_UNIQ=${CMD_UNIQ:-$(which uniq)}
 
 # 
 FFBX_FIELD_SEPARATOR=${FFBX_FIELD_SEPARATOR:-"\t"}
