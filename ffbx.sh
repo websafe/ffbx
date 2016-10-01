@@ -27,6 +27,31 @@ CMD_SQLITE3=${CMD_SQLITE3:-$(which sqlite3)}
 CMD_TR=${CMD_TR:-$(which tr)}
 CMD_UNIQ=${CMD_UNIQ:-$(which uniq)}
 
+if [ ! -f "${CMD_CUT}" ]; then
+    echo "cut not found" >/dev/stderr
+    exit 1
+fi
+
+if [ ! -f "${CMD_FIND}" ]; then
+    echo "find not found" >/dev/stderr
+    exit 1
+fi
+
+if [ ! -f "${CMD_SQLITE3}" ]; then
+    echo "sqlite3 not found" >/dev/stderr
+    exit 1
+fi
+
+if [ ! -f "${CMD_TR}" ]; then
+    echo "tr not found" >/dev/stderr
+    exit 1
+fi
+
+if [ ! -f "${CMD_UNIQ}" ]; then
+    echo "uniq not found" >/dev/stderr
+    exit 1
+fi
+
 # 
 FFBX_FIELD_SEPARATOR=${FFBX_FIELD_SEPARATOR:-"\t"}
 FFBX_ROW_SEPARATOR=${FFBX_ROW_SEPARATOR:-"\n"}
