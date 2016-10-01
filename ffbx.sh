@@ -225,6 +225,7 @@ do
 
         # Output CSV data:
         echo -ne "${bookmark_last_modification}"
+        echo -ne "${FFBX_FIELD_SEPARATOR}"
         echo -ne "${bookmark_date_added}"
         if [ "${db_places_paths_were_autodiscovered}" = "yes" ];
         then
