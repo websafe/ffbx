@@ -8,6 +8,7 @@ Simple Bash script using sqlite3 for extracting bookmarks from
 Bookmarks are extracted with:
 
  + timestamp of last modification,
+ + date added,
  + profile name,
  + folder,
  + url,
