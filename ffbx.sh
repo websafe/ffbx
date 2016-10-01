@@ -194,6 +194,16 @@ do
 
         debug "bookmark_last_modification ${bookmark_last_modification}"
 
+        # Retrieve added timestamp for the current bookmark:
+        bookmark_date_added=$(
+            ${CMD_SQLITE3} "${db_places_path}" \
+                "SELECT dateAdded FROM moz_bookmarks
+                    WHERE fk=${bookmark_places_id} 
+                    ORDER BY dateAdded DESC LIMIT 1"
+        )
+
+        debug "bookmark_date_added ${bookmark_date_added}"
+
         # Retrieve id of current bookmarks parent folder:
         bookmark_folder_id=$(
             ${CMD_SQLITE3} "${db_places_path}" \
@@ -215,6 +225,7 @@ do
 
         # Output CSV data:
         echo -ne "${bookmark_last_modification}"
+        echo -ne "${bookmark_date_added}"
         if [ "${db_places_paths_were_autodiscovered}" = "yes" ];
         then
             echo -ne "${FFBX_FIELD_SEPARATOR}"
