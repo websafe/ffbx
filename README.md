@@ -23,19 +23,19 @@ Usage
 A simple test without installing:
 
 ~~~~ bash
-wget -qO - https://raw.githubusercontent.com/websafe/ffbx/master/ffbx.sh | bash
+wget -qO - https://raw.githubusercontent.com/chbarts/ffbx/master/ffbx.sh | bash
 ~~~~
 
 or:
 
 ~~~~ bash
-lynx -dump https://raw.githubusercontent.com/websafe/ffbx/master/ffbx.sh | bash
+lynx -dump https://raw.githubusercontent.com/chbarts/ffbx/master/ffbx.sh | bash
 ~~~~
 
 or:
 
 ~~~~ bash
-curl -sS https://raw.githubusercontent.com/websafe/ffbx/master/ffbx.sh | bash
+curl -sS https://raw.githubusercontent.com/chbarts/ffbx/master/ffbx.sh | bash
 ~~~~
 
 
