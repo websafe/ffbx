@@ -8,6 +8,7 @@ Simple Bash script using sqlite3 for extracting bookmarks from
 Bookmarks are extracted with:
 
  + timestamp of last modification,
+ + date added,
  + profile name,
  + folder,
  + url,
@@ -22,19 +23,19 @@ Usage
 A simple test without installing:
 
 ~~~~ bash
-wget -qO - https://raw.githubusercontent.com/websafe/ffbx/master/ffbx.sh | bash
+wget -qO - https://raw.githubusercontent.com/chbarts/ffbx/master/ffbx.sh | bash
 ~~~~
 
 or:
 
 ~~~~ bash
-lynx -dump https://raw.githubusercontent.com/websafe/ffbx/master/ffbx.sh | bash
+lynx -dump https://raw.githubusercontent.com/chbarts/ffbx/master/ffbx.sh | bash
 ~~~~
 
 or:
 
 ~~~~ bash
-curl -sS https://raw.githubusercontent.com/websafe/ffbx/master/ffbx.sh | bash
+curl -sS https://raw.githubusercontent.com/chbarts/ffbx/master/ffbx.sh | bash
 ~~~~
 
 
@@ -68,15 +69,13 @@ ffbx.sh ~/.mozilla/firefox/ffbx-example/places.sqlite
 the result:
 
 ~~~~
-1391725993809844        Bookmarks Toolbar       https://www.mozilla.org/en-US/firefox/central/  Getting Started
-1391725993811277        Mozilla Firefox https://www.mozilla.org/en-US/firefox/help/     Help and Tutorials
-1391725993812029        Mozilla Firefox https://www.mozilla.org/en-US/firefox/customize/        Customize Firefox
-1391725993812829        Mozilla Firefox https://www.mozilla.org/en-US/contribute/       Get Involved
-1391725993813492        Mozilla Firefox https://www.mozilla.org/en-US/about/    About Us
-1391725993870487        Bookmarks Toolbar       place:sort=8&maxResults=10      Most Visited
-1391725993870988        Bookmarks Menu  place:folder=BOOKMARKS_MENU&folder=UNFILED_BOOKMARKS&folder=TOOLBAR&queryType=1&sort=12&maxResults=10&excludeQueries=1  Recently Bookmarked
-1391725993871436        Bookmarks Menu  place:type=6&sort=14&maxResults=10      Recent Tags
-1391726063106065        Unsorted Bookmarks      https://github.com/websafe/ffbx websafe/ffbx · GitHub   Firefox,bookmarks,extract,Bash,script,SQLite
+1475596075859000	1475596075857000	Bookmarks Toolbar	https://www.mozilla.org/en-US/firefox/central/	Getting Started	
+1475596075862000	1475596075861000	Mozilla Firefox	https://www.mozilla.org/en-US/firefox/help/	Help and Tutorials	
+1475596075863000	1475596075863000	Mozilla Firefox	https://www.mozilla.org/en-US/firefox/customize/	Customize Firefox	
+1475596075865000	1475596075864000	Mozilla Firefox	https://www.mozilla.org/en-US/contribute/	Get Involved	
+1475596075866000	1475596075866000	Mozilla Firefox	https://www.mozilla.org/en-US/about/	About Us	
+1475596075945000	1475596075889000	Bookmarks Toolbar	place:sort=8&maxResults=10	Most Visited	
+1475596075985000	1475596075949000	Bookmarks Menu	place:type=6&sort=14&maxResults=10	Recent Tags	
 ~~~~
 
 
@@ -98,75 +97,66 @@ the result:
 ~~~~
 Array
 (
-    [0] => 1391725993809844
-    [1] => Bookmarks Toolbar
-    [2] => https://www.mozilla.org/en-US/firefox/central/
-    [3] => Getting Started
-    [4] => 
+    [0] => 1475596075859000
+    [1] => 1475596075857000
+    [2] => Bookmarks Toolbar
+    [3] => https://www.mozilla.org/en-US/firefox/central/
+    [4] => Getting Started
+    [5] => 
 )
 Array
 (
-    [0] => 1391725993811277
-    [1] => Mozilla Firefox
-    [2] => https://www.mozilla.org/en-US/firefox/help/
-    [3] => Help and Tutorials
-    [4] => 
+    [0] => 1475596075862000
+    [1] => 1475596075861000
+    [2] => Mozilla Firefox
+    [3] => https://www.mozilla.org/en-US/firefox/help/
+    [4] => Help and Tutorials
+    [5] => 
 )
 Array
 (
-    [0] => 1391725993812029
-    [1] => Mozilla Firefox
-    [2] => https://www.mozilla.org/en-US/firefox/customize/
-    [3] => Customize Firefox
-    [4] => 
+    [0] => 1475596075863000
+    [1] => 1475596075863000
+    [2] => Mozilla Firefox
+    [3] => https://www.mozilla.org/en-US/firefox/customize/
+    [4] => Customize Firefox
+    [5] => 
 )
 Array
 (
-    [0] => 1391725993812829
-    [1] => Mozilla Firefox
-    [2] => https://www.mozilla.org/en-US/contribute/
-    [3] => Get Involved
-    [4] => 
+    [0] => 1475596075865000
+    [1] => 1475596075864000
+    [2] => Mozilla Firefox
+    [3] => https://www.mozilla.org/en-US/contribute/
+    [4] => Get Involved
+    [5] => 
 )
 Array
 (
-    [0] => 1391725993813492
-    [1] => Mozilla Firefox
-    [2] => https://www.mozilla.org/en-US/about/
-    [3] => About Us
-    [4] => 
+    [0] => 1475596075866000
+    [1] => 1475596075866000
+    [2] => Mozilla Firefox
+    [3] => https://www.mozilla.org/en-US/about/
+    [4] => About Us
+    [5] => 
 )
 Array
 (
-    [0] => 1391725993870487
-    [1] => Bookmarks Toolbar
-    [2] => place:sort=8&maxResults=10
-    [3] => Most Visited
-    [4] => 
+    [0] => 1475596075945000
+    [1] => 1475596075889000
+    [2] => Bookmarks Toolbar
+    [3] => place:sort=8&maxResults=10
+    [4] => Most Visited
+    [5] => 
 )
 Array
 (
-    [0] => 1391725993870988
-    [1] => Bookmarks Menu
-    [2] => place:folder=BOOKMARKS_MENU&folder=UNFILED_BOOKMARKS&folder=TOOLBAR&queryType=1&sort=12&maxResults=10&excludeQueries=1
-    [3] => Recently Bookmarked
-    [4] => 
-)
-Array
-(
-    [0] => 1391725993871436
-    [1] => Bookmarks Menu
-    [2] => place:type=6&sort=14&maxResults=10
-    [3] => Recent Tags
-    [4] => 
-)
-Array
-(
-    [0] => 1391726063106065
-    [1] => Unsorted Bookmarks
-    [2] => https://github.com/websafe/ffbx
-    [3] => websafe/ffbx · GitHub
-    [4] => Firefox,bookmarks,extract,Bash,script,SQLite,
+    [0] => 1475596075985000
+    [1] => 1475596075949000
+    [2] => Bookmarks Menu
+    [3] => place:type=6&sort=14&maxResults=10
+    [4] => Recent Tags
+    [5] => 
 )
 ~~~~
 
@@ -185,14 +175,12 @@ ffbx.sh \
 the result:
 
 ~~~~
-["1391725993809844","Bookmarks Toolbar","https:\/\/www.mozilla.org\/en-US\/firefox\/central\/","Getting Started",""]
-["1391725993811277","Mozilla Firefox","https:\/\/www.mozilla.org\/en-US\/firefox\/help\/","Help and Tutorials",""]
-["1391725993812029","Mozilla Firefox","https:\/\/www.mozilla.org\/en-US\/firefox\/customize\/","Customize Firefox",""]
-["1391725993812829","Mozilla Firefox","https:\/\/www.mozilla.org\/en-US\/contribute\/","Get Involved",""]
-["1391725993813492","Mozilla Firefox","https:\/\/www.mozilla.org\/en-US\/about\/","About Us",""]
-["1391725993870487","Bookmarks Toolbar","place:sort=8&maxResults=10","Most Visited",""]
-["1391725993870988","Bookmarks Menu","place:folder=BOOKMARKS_MENU&folder=UNFILED_BOOKMARKS&folder=TOOLBAR&queryType=1&sort=12&maxResults=10&excludeQueries=1","Recently Bookmarked",""]
-["1391725993871436","Bookmarks Menu","place:type=6&sort=14&maxResults=10","Recent Tags",""]
-["1391726063106065","Unsorted Bookmarks","https:\/\/github.com\/websafe\/ffbx","websafe\/ffbx \u00b7 GitHub","Firefox,bookmarks,extract,Bash,script,SQLite,"]
+["1475596075859000","1475596075857000","Bookmarks Toolbar","https:\/\/www.mozilla.org\/en-US\/firefox\/central\/","Getting Started",""]
+["1475596075862000","1475596075861000","Mozilla Firefox","https:\/\/www.mozilla.org\/en-US\/firefox\/help\/","Help and Tutorials",""]
+["1475596075863000","1475596075863000","Mozilla Firefox","https:\/\/www.mozilla.org\/en-US\/firefox\/customize\/","Customize Firefox",""]
+["1475596075865000","1475596075864000","Mozilla Firefox","https:\/\/www.mozilla.org\/en-US\/contribute\/","Get Involved",""]
+["1475596075866000","1475596075866000","Mozilla Firefox","https:\/\/www.mozilla.org\/en-US\/about\/","About Us",""]
+["1475596075945000","1475596075889000","Bookmarks Toolbar","place:sort=8&maxResults=10","Most Visited",""]
+["1475596075985000","1475596075949000","Bookmarks Menu","place:type=6&sort=14&maxResults=10","Recent Tags",""]
 false
 ~~~~

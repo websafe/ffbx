@@ -21,11 +21,36 @@ IFS="
 "
 
 #
-CMD_CUT=${CMD_CUT:-/bin/cut}
-CMD_FIND=${CMD_FIND:-/usr/bin/find}
-CMD_SQLITE3=${CMD_SQLITE3:-/usr/bin/sqlite3}
-CMD_TR=${CMD_TR:-/bin/tr}
-CMD_UNIQ=${CMD_UNIQ:-/bin/uniq}
+CMD_CUT=${CMD_CUT:-$(which cut)}
+CMD_FIND=${CMD_FIND:-$(which find)}
+CMD_SQLITE3=${CMD_SQLITE3:-$(which sqlite3)}
+CMD_TR=${CMD_TR:-$(which tr)}
+CMD_UNIQ=${CMD_UNIQ:-$(which uniq)}
+
+if [ ! -f "${CMD_CUT}" ]; then
+    echo "cut not found" >/dev/stderr
+    exit 1
+fi
+
+if [ ! -f "${CMD_FIND}" ]; then
+    echo "find not found" >/dev/stderr
+    exit 1
+fi
+
+if [ ! -f "${CMD_SQLITE3}" ]; then
+    echo "sqlite3 not found" >/dev/stderr
+    exit 1
+fi
+
+if [ ! -f "${CMD_TR}" ]; then
+    echo "tr not found" >/dev/stderr
+    exit 1
+fi
+
+if [ ! -f "${CMD_UNIQ}" ]; then
+    echo "uniq not found" >/dev/stderr
+    exit 1
+fi
 
 # 
 FFBX_FIELD_SEPARATOR=${FFBX_FIELD_SEPARATOR:-"\t"}
@@ -169,6 +194,16 @@ do
 
         debug "bookmark_last_modification ${bookmark_last_modification}"
 
+        # Retrieve added timestamp for the current bookmark:
+        bookmark_date_added=$(
+            ${CMD_SQLITE3} "${db_places_path}" \
+                "SELECT dateAdded FROM moz_bookmarks
+                    WHERE fk=${bookmark_places_id} 
+                    ORDER BY dateAdded DESC LIMIT 1"
+        )
+
+        debug "bookmark_date_added ${bookmark_date_added}"
+
         # Retrieve id of current bookmarks parent folder:
         bookmark_folder_id=$(
             ${CMD_SQLITE3} "${db_places_path}" \
@@ -190,6 +225,8 @@ do
 
         # Output CSV data:
         echo -ne "${bookmark_last_modification}"
+        echo -ne "${FFBX_FIELD_SEPARATOR}"
+        echo -ne "${bookmark_date_added}"
         if [ "${db_places_paths_were_autodiscovered}" = "yes" ];
         then
             echo -ne "${FFBX_FIELD_SEPARATOR}"

@@ -1,0 +1,20 @@
+#!/usr/bin/awk -f
+# Convert datestamps to a human-readable form
+
+function ctime(ts)
+{
+    return strftime("%a %b %e %H:%M:%S %Z %Y", ts);
+}
+
+BEGIN {
+    FS="\t"
+    OFS="\t"
+}
+
+{
+    $1 = ctime(sprintf("%d", $1/1000000))
+    $2 = ctime(sprintf("%d", $2/1000000))
+    $1 = $1 # Rebuild the records...
+    $2 = $2
+    print $0
+}
